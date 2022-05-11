@@ -29,7 +29,9 @@
             <div class="container">
                 <div class="card shadow-sm border my-2">
                     <div class="card-body">
-                        <h5 class="card-title">Add post</h5>
+                        <div class="d-flex">
+                        <h5 class="card-title">Edit post</h5>
+                        </div>
                         <form action="/edit_post/{{ $post->id }}" method="post">
                             @csrf
                             @method('PUT')

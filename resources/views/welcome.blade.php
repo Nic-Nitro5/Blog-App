@@ -86,7 +86,22 @@
                 @foreach ($posts as $post)
                 <div class="card shadow-sm border my-2">
                     <div class="card-body">
-                        <h5 class="card-title">{{ $post->post_title; }}</h5>
+                        <div class="d-flex justify-content-between">
+                            <h5 class="card-title">{{ $post->post_title; }}</h5>
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="rating" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Rate
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="rating">
+                                    <li class="dropdown-item rating" data-id="{{ $post->id; }}" data-rating="1" onClick="addRating(this)">1</li>
+                                    <li class="dropdown-item rating" data-id="{{ $post->id; }}" data-rating="2" onClick="addRating(this)">2</li>
+                                    <li class="dropdown-item rating" data-id="{{ $post->id; }}" data-rating="3" onClick="addRating(this)">3</li>
+                                    <li class="dropdown-item rating" data-id="{{ $post->id; }}" data-rating="4" onClick="addRating(this)">4</li>
+                                    <li class="dropdown-item rating" data-id="{{ $post->id; }}" data-rating="5" onClick="addRating(this)">5</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
                         <h6 class="card-subtitle mb-2 text-muted">{{ $post->created_at; }}</h6>
                         <p class="card-text">{{ $post->post_body; }}</p>
                         <div class="d-flex">
@@ -104,14 +119,14 @@
         </section>
 
         <!-- JS -->
-        <!-- <script>
-            const createPost = document.querySelector('#create_post');
-            const addPostForm = document.querySelector('#add_post');
+        <script>
+            function addRating(ratingEl){
+                const blogId = ratingEl.getAttribute("data-id");
+                const ratingVal = ratingEl.getAttribute("data-rating");
 
-            createPost.addEventListener("click", function(){
-                addPostForm.classList.remove("d-none");
-                addPostForm.classList.add("d-block");
-            });
-        </script> -->
+                alert(blogId);
+                console.log(ratingVal);
+            }
+        </script>
     </body>
 </html>
